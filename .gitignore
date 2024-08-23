@@ -11,10 +11,6 @@ yarn-error.log*
 .env.local
 .env.*.local
 
-# Docker files
-Dockerfile
-docker-compose.yml
-
 # Build output
 dist/
 build/
