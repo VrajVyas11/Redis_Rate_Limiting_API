@@ -1,4 +1,4 @@
-import { redis } from "../app.js"
+import { redis } from "../Redis/redisClient.js";
 
 export const getCashedData = (key) => async (req, res, next) => {
     let data = await redis.get(key)

@@ -1,24 +1,16 @@
 import express from "express";
 import { getProductDetails, productpromise } from "./api/products.js";
-import { Redis } from "ioredis";
 import { getCashedData, rateLimiter } from "./middleware/redis.js";
-import path from "path";
-import { fileURLToPath } from 'url';
+import { redis } from "./Redis/redisClient.js";
 
 const app = express();
 
-export const redis = new Redis({
-    host: 'redis-13323.c244.us-east-1-2.ec2.redns.redis-cloud.com',
-    port: 13323,
-    password: 'BF1NZ72DdP9ntOS01QFtCH8jyupVT5zT',
-});
+
 
 redis.on("connect", () => {
     console.log("Redis connected");
 });
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Serve the API Rate Limiting Test Interface HTML
 app.get("/", rateLimiter({ limit: 30, timer: 300, keys: "home" }), (req, res) => {
