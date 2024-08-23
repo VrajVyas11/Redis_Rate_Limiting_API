@@ -18,7 +18,7 @@ app.get("/", rateLimiter({ limit: 30, timer: 300, keys: "home" }), (req, res) =>
     const htmlContent = `
     <!DOCTYPE html>
     <html lang="en">
-    <head>
+      <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>API Rate Limiting Test Interface</title>
@@ -33,78 +33,58 @@ app.get("/", rateLimiter({ limit: 30, timer: 300, keys: "home" }), (req, res) =>
                 align-items: center;
                 height: 100vh;
                 margin: 0;
+                overflow-x: hidden; /* Prevent horizontal overflow */
             }
             h1 {
                 margin-bottom: 20px;
+                font-size: 2.5rem; /* Responsive font size */
+                text-align: center;
             }
-.upperButtons {
-    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Smooth blue gradient with a darker shade for contrast */
-    border: none;
-    color: white;
-    padding: 12px 24px; 
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px; 
-    margin: 10px;
-    cursor: pointer;
-    border-radius: 12px; 
-    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
-    border: 2px solid rgba(0,0,0,0.1); 
-}
-
-.upperButtons:hover {
-    background: linear-gradient(135deg, #0033cc, #4a90e2); /* Reversed gradient on hover for a dynamic effect */
-    transform: scale(1.05); /* Slight scale up on hover for emphasis */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover for depth */
-}
-
-
-.button  {
-    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Smooth blue gradient */
-    border: none;
-    color: white;
-    width:90%;
-    padding: 15px 30px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 18px; /* Slightly larger font for better readability */
-    margin: 10px;
-    cursor: pointer;
-    border-radius: 10px; /* More rounded for a modern look */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
-}
-
-.button:hover {
-    transform: scale(1.05); /* Slightly smaller scale for a subtle effect */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
-}
-
-                        .output.loading{
-            border: 4px solid rgba(0,0,0,0.1);
-            border-left: 4px solid #333;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-                      .output.loading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+            .upperButtons, .button {
+                background: linear-gradient(135deg, #6a11cb, #2575fc);
+                border: none;
+                color: white;
+                padding: 12px 24px;
+                text-align: center;
+                text-decoration: none;
+                font-size: 1rem;
+                margin: 10px;
+                cursor: pointer;
+                border-radius: 12px;
+                transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+                border: 2px solid rgba(0,0,0,0.1);
+                width: 100%; /* Ensure buttons fit within their container */
+                max-width: 300px; /* Limit button width */
+            }
+            .button
+            {
+                height:60px
+                }
+            .upperButtons:hover, .button:hover {
+                background: linear-gradient(135deg, #0033cc, #4a90e2);
+                transform: scale(1.05);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            }
+            .output.loading {
+                border: 4px solid rgba(0,0,0,0.1);
+                border-left: 4px solid #333;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                animation: spin 1s linear infinite;
+            }
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
             .output {
                 margin-top: 20px;
                 padding: 20px;
                 background: #fff;
                 border-radius: 10px;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-                width: 80%;
+                width: 100%;
                 max-width: 600px;
                 text-align: left;
                 white-space: pre-wrap;
@@ -116,85 +96,101 @@ app.get("/", rateLimiter({ limit: 30, timer: 300, keys: "home" }), (req, res) =>
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                width: 100%; /* Ensure full-width input group */
+                max-width: 600px; /* Limit input group width */
             }
-.input-group input {
-    padding: 15px;
-    font-size: 18px;
-width:80%;
-    border-radius: 12px;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    text-align: center;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.main {
-    background: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
-    backdrop-filter: blur(10px); /* Apply blur effect */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow for more depth */
-    color: #333; /* Darker text color for readability */
-    width: fit-content;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; /* Center content horizontally */
-    padding: 20px; /* Add padding for spacing */
-    border-radius: 12px; /* Rounded corners for a modern look */
-}
-
-.container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Two columns of equal width */
-    gap: 20px; /* Adjust the space between items */
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 20px;
-}
-
-.header{
-font-size:50px;
-}
-
+            .input-group input {
+                padding: 15px;
+                font-size: 1rem;
+                width: 80%;
+                max-width: 400px;
+                border-radius: 12px;
+                border: 1px solid #ddd;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                text-align: center;
+                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+                margin-bottom: 10px; /* Space between input and button */
+            }
+            .main {
+                background: rgba(255, 255, 255, 0.5);
+                backdrop-filter: blur(10px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                color: #333;
+                width: 100%;
+                max-width: 800px;
+                display: flex;
+                max-height:850px;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+                border-radius: 12px;
+            }
+            .container {
+                display: grid;
+                grid-template-columns: 1fr; /* Single column layout by default */
+                gap: 20px;
+                width: 100%;
+                padding: 0 20px;
+            }
+            @media (min-width: 600px) {
+                .container {
+                    grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens */
+                }
+            }
+            @media (min-width: 900px) {
+                .container {
+                    grid-template-columns: repeat(4, 1fr); /* Four columns on large screens */
+                }
+            }
+            .header {
+                font-size: 2rem; /* Responsive font size */
+            }
+            @media (max-width: 600px) {
+                .header {
+                    font-size: 1.5rem; /* Smaller font size for small screens */
+                }
+                .input-group input, .button, .upperButtons {
+                    font-size: 0.875rem; /* Smaller font size for buttons and inputs */
+                }
+            }
         </style>
     </head>
-    <body>
+       <body>
     <div class="main">
         <h1 class="header">Redis API Rate Limiting Test Interface</h1>
-<div class="container">
+        <div class="container">
+            <button class="upperButtons" onclick="homepage('/')">Refresh Home</button>
+            <button class="upperButtons" onclick="testApi('/products')">Get Products</button>
 
-        <button class="upperButtons" onclick="homepage('/')">Refresh Home</button>
-<button class="upperButtons" onclick="testApi('/products')">Get Products</button>
+            <div class="input-group">
+                <input type="number" id="productIdDetails" placeholder="Enter Product ID for Details" min="1">
+                <button class="button" onclick="fetchProductDetails()">Get Product Details</button>
+            </div>
 
-        <div class="input-group">
-            <input type="number" id="productIdDetails" placeholder="Enter Product ID for Details" min="1">
-            <button class="button" onclick="fetchProductDetails()">Get Product Details</button>
+            <div class="input-group">
+                <input type="number" id="productIdOrder" placeholder="Enter Product ID for Order" min="1">
+                <button class="button" onclick="placeOrder()">Place Order</button>
+            </div>
         </div>
-
-        <div class="input-group">
-            <input type="number" id="productIdOrder" placeholder="Enter Product ID for Order" min="1">
-            <button class="button" onclick="placeOrder()">Place Order</button>
-        </div>
-</div>
         <div class="output" id="output"></div>
-
         <script>
-        async function homepage(url) {
+            async function homepage(url) {
                 try {
-                document.getElementById('output').innerText = "";
-                output.classList.add('loading');
-                                    const response = await fetch(url);
+                    document.getElementById('output').innerText = "";
+                    output.classList.add('loading');
+                    const response = await fetch(url);
                     output.classList.remove('loading');
-                        document.getElementById('output').innerText = "Welcome to home page...This also has rate limiting implemented on it";
-                        return
+                    document.getElementById('output').innerText = "Welcome to home page...This also has rate limiting implemented on it";
                 } catch (error) {
                     document.getElementById('output').innerText = 'Error: ' + error.message + '\\n\\n';
                 }
             }
+
             async function testApi(url) {
                 try {
-                document.getElementById('output').innerText = "";
-                output.classList.add('loading');
+                    document.getElementById('output').innerText = "";
+                    output.classList.add('loading');
                     const response = await fetch(url);
                     const data = await response.json();
                     output.classList.remove('loading');
@@ -215,11 +211,11 @@ font-size:50px;
                     return;
                 }
                 try {
-                document.getElementById('output').innerText = "";
-                output.classList.add('loading');
-                const response = await fetch(\`/product/\${productId}\`);
-                const data = await response.json();
-                output.classList.remove('loading');
+                    document.getElementById('output').innerText = "";
+                    output.classList.add('loading');
+                    const response = await fetch(\`/product/\${productId}\`);
+                    const data = await response.json();
+                    output.classList.remove('loading');
                     if (data.status === 429) {
                         document.getElementById('output').innerText = \`\${data.message}\`;
                         return;
@@ -237,11 +233,11 @@ font-size:50px;
                     return;
                 }
                 try {
-                document.getElementById('output').innerText = "";
-                output.classList.add('loading');
+                    document.getElementById('output').innerText = "";
+                    output.classList.add('loading');
                     const response = await fetch(\`/order/\${productId}\`);
-                  const data = await response.json();
-                  output.classList.remove('loading');
+                    const data = await response.json();
+                    output.classList.remove('loading');
                     if (data.status === 429) {
                         document.getElementById('output').innerText = \`\${data.message}\`;
                         return;
