@@ -1,11 +1,12 @@
+import "dotenv/config";
 import express from "express";
 import { getProductDetails, productpromise } from "./api/products.js";
 import { getCashedData, rateLimiter } from "./middleware/redis.js";
-import { redis } from "./Redis/redisClient.js";
+ import { redis } from "./Redis/redisClient.js";
 
 const app = express();
 
-
+const PORT=process.env.PORT || 3000 
 
 redis.on("connect", () => {
     console.log("Redis connected");
@@ -292,6 +293,6 @@ app.get("/order/:id", rateLimiter({ limit: 5, timer: 20, keys: "order" }), async
     });
 });
 
-app.listen(3000, () => {
-    console.log(`Server is running on port 3000`);
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });

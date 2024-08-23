@@ -39,5 +39,4 @@ Thumbs.db
 # Windows specific
 Thumbs.db
 
-# Exclude specific files
-Redis/redisClient.js
+
