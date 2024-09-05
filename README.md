@@ -1,7 +1,3 @@
-Got it. Since there is no Swagger documentation available for your Redis rate-limiting API, we can revise the documentation to exclude references to Swagger and focus on providing the necessary setup and testing instructions. Here’s the updated version:
-
----
-
 ## Redis Rate Limiting API
 
 ### This Project is For Learning Purposes Only
